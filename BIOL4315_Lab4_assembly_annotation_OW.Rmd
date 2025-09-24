@@ -1,0 +1,12 @@
+---
+title: "BIOL4315_Lab4_Assembly_Annotation"
+author: "OceanneYW"
+date: "2025-09-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+

@@ -9,4 +9,22 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Download ***Arabidopsis thaliana ref genome***
+```{bash conda, eval=FALSE}
+wget -nc https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/735/GCF_000001735.4_TAIR10.1/GCF_000001735.4_TAIR10.1_genomic.fna.gz
 
+```
+
+## Packages installation
+```{r, eval=FALSE, echo=FALSE}
+#BiocManager::install("clusterProfiler")
+#BiocManager::install("EnhancedVolcano")
+
+#Note, if biomaRt isn't installed on your machine for some reason, you should install it as well. 
+
+lapply(c(
+  "docopt", "DT", "pheatmap","GenomicFeatures", "DESeq2",
+  "edgeR", "systemPipeR", "systemPipeRdata", "BiocStyle", "GO.db", "dplyr",
+  "tidyr", "stringr", "Rqc", "QuasR", "DT", "ape", "clusterProfiler","biomaRt","EnhancedVolcano"
+), require, character.only = TRUE)
+```

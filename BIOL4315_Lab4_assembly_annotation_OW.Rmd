@@ -27,4 +27,19 @@ lapply(c(
   "edgeR", "systemPipeR", "systemPipeRdata", "BiocStyle", "GO.db", "dplyr",
   "tidyr", "stringr", "Rqc", "QuasR", "DT", "ape", "clusterProfiler","biomaRt","EnhancedVolcano"
 ), require, character.only = TRUE)
+
+#hisat2 checked
+```
+
+## 4.1 Accessing the RNAseq data and sample data
+```{r sample data loading, echo=FALSE, eval=TRUE}
+#e.g.1 get the path 
+fq_path <- systemPipeRdata::pathList()$fastqdir
+
+#e.g.2 list the files 
+
+fq_files <- list.files(fq_path)
+
+print(fq_files)
+
 ```

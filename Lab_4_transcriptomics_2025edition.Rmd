@@ -418,8 +418,12 @@ Here's a basic structure for running a fastq files using `hisat2`:
 
 >**Note2: hisat2 does not accept .gz file to make sure to gunzip your processed fastq files if you havent yet**
 
-```{bash h2_demo}
+```{bash h2_demo, echo=FALSE}
+gunzip -r ./processed_fastq/
 
+mkdir ./sam_files
+
+# Loop through all .fastq files to generate .sam files
 hisat2 -x hisat2_index/tair10_1_index  processed_fastq/SRR446027_1.fastq.gz_processed.fastq  -p 8 -S sam_files/file1.sam
 
 ```

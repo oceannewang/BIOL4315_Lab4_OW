@@ -1,3 +1,7 @@
 .Rproj.user
 *.gz
 *.fna
+*.gtf
+processed_fastq/
+hisat2_index/
+sam_files/

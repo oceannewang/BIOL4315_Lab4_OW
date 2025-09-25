@@ -43,3 +43,29 @@ fq_files <- list.files(fq_path)
 print(fq_files)
 
 ```
+```{r Read meta data, echo=TRUE, eval=FALSE}
+meta_data <- read.table('/Users/owang/Library/R/arm64/4.4/library/systemPipeRdata/extdata/param/targetsPE.txt', header = TRUE)
+head(meta_data)
+```
+
+### 4.1.1 Question1
+```{r replace pathways, eval=TRUE, echo=TRUE}
+library(stringr)
+library(data.table)
+
+setDT(meta_data)[,"FileName1" := str_replace(meta_data$FileName1, "./data/", fq_path)]
+setDT(meta_data)[,"FileName2" := str_replace(meta_data$FileName2, "./data/", fq_path)]
+head(meta_data)
+```
+
+### 4.2 Read Processing
+```{r, eval=TRUE}
+library(Rqc)
+
+fileList <- list.files(path = fq_path, pattern = ".fastq.gz", full.names = TRUE)
+pair_vector <- rep(1:3, each=2)
+fqFiles <- lapply(1:4, function(x) {rqc(path = ".", pattern = ".fastq.gz", pair=c(1,1), openBrowser = FALSE)})
+#qualityBoxPlot <- rqcCycleQualityBoxPlot(rqc(path = fq_path, pattern = ".fastq.gz", openBrowser = FALSE))
+
+qualityBoxPlot
+```

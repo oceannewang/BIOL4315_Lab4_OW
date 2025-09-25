@@ -69,3 +69,13 @@ fqFiles <- lapply(1:4, function(x) {rqc(path = ".", pattern = ".fastq.gz", pair=
 
 qualityBoxPlot
 ```
+
+### 4.2.2 
+```{r, eval=TRUE}
+#BiocManager::install("QuasR")
+
+library(QuasR)
+library(ShortRead)
+
+
+```

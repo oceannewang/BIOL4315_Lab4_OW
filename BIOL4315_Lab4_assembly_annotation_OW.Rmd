@@ -63,19 +63,30 @@ head(meta_data)
 library(Rqc)
 
 fileList <- list.files(path = fq_path, pattern = ".fastq.gz", full.names = TRUE)
-pair_vector <- rep(1:3, each=2)
-fqFiles <- lapply(1:4, function(x) {rqc(path = ".", pattern = ".fastq.gz", pair=c(1,1), openBrowser = FALSE)})
+#pair_vector <- rep(1:3, each=2)
+#fqFiles <- lapply(1:4, function(x) {rqc(path = ".", pattern = ".fastq.gz", pair=c(1,1), openBrowser = FALSE)})
 #qualityBoxPlot <- rqcCycleQualityBoxPlot(rqc(path = fq_path, pattern = ".fastq.gz", openBrowser = FALSE))
+group1Lst <- fileList[1:12]
+group2Lst <- fileList[13:24]
+group3Lst <- fileList[25:36]
 
-qualityBoxPlot
+rqc_results <- rqc(path = fq_path, pattern = ".fastq.gz", openBrowser = FALSE)
+
+group1Plot <- rqcCycleQualityBoxPlot(rqc_results[1:12])
+group1Plot
 ```
 
 ### 4.2.2 
-```{r, eval=TRUE}
+```{r, eval=TRUE, echo=FALSE}
 #BiocManager::install("QuasR")
 
 library(QuasR)
 library(ShortRead)
 
 
+
+QuasR::preprocessReads(fastqFiles, processedFiles,
+                       nBases = 1,
+                       truncateEndBases = 3,
+                       Lpattern = "GCCCGGGTAA")
 ```
